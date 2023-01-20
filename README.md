@@ -1,6 +1,6 @@
 # Theme
 
-Blank — starter [Hugo](https://gohugo.io/) theme for developers. Use it to make your own theme.
+Theme — starter [Hugo](https://gohugo.io/) theme for developers. Use it to make your own theme.
 
 ## Installation
 
