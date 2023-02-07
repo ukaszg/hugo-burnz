@@ -1,6 +1,6 @@
-@import '../lib/resetatron.scss/index.scss';
+@import 'resetatron/index.scss';
 $fa-font-path: "fonts" !default;
-@import '../lib/Fork-Awesome/scss/fork-awesome.scss';
+@import 'fork-awesome/scss/fork-awesome.scss';
 @import 'mixin';
 //{{{ Fonts
 $mono-font: "Source Code Pro", Menlo, Monaco, Consolas, "Courier New", monospace;
