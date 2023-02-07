@@ -1,3 +1,16 @@
 <footer>
-	<p>&copy; {{ now.Year }} <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></p>
+	<p>
+        &copy;
+        {{ if (and .Site.Params.since (lt .Site.Params.since now.Year)) }}
+            {{ .Site.Params.since }} -
+        {{ end }}
+        {{ now.Year }}
+        {{ with .Site.Params.author }} {{ . }} {{ end }}
+        ·
+        {{ if (and .Site.Params.license) }}
+            {{ i18n "licensed_under" }} {{ .Site.Params.license | safeHTML }}
+        ·
+        {{ end }}
+        {{ i18n "powered_by" }} <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/ukaszg/hugo-burnz/">Burnz</a>.
+    </p>
 </footer>

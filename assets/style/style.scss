@@ -1,11 +1,76 @@
-@import 'reset';
-@import 'zenburn';
-
-@media (prefers-color-scheme: dark){
-    body {
-        color:      $fg;
-        background: $bg;
-    }
+@import '../lib/resetatron.scss/index.scss';
+$fa-font-path: "fonts" !default;
+@import '../lib/Fork-Awesome/scss/fork-awesome.scss';
+@import 'mixin';
+//{{{ Fonts
+$mono-font: "Source Code Pro", Menlo, Monaco, Consolas, "Courier New", monospace;
+$main-font: sans-serif;
+//}}}
+//{{{ Colors from Zenburn
+$bg       : #3F3F3F;
+$bg-alt   : #383838;
+$base0    : #000000;
+$base1    : #2B2B2B;
+$base2    : #303030;
+$base3    : #383838;
+$base4    : #494949;
+$base5    : #4F4F4F;
+$base6    : #5F5F5F;
+$base7    : #6F6F6F;
+$base8    : #FFFFEF;
+$fg       : #DCDCDC;
+$fg-alt   : #989890;
+////////////////////
+$grey     : $base4;
+$red      : #CC9393;
+$orange   : #DFAF8F;
+$green    : #7F9F7F;
+$teal     : #4db5bd;
+$yellow   : #F0DFAF;
+$blue     : #8CD0D3;
+$dark-blue: #2257A0;
+$magenta  : #DC8CC3;
+$violet   : #a9a1e1;
+$cyan     : #93E0E3;
+$dark-cyan: #5699AF;
+////////////////////
+$fg-1     : #656555;
+$fg_2     : #FFFFFD;
+$red-4    : #8C5353;
+$red-1    : #BC8383;
+$red_1    : #DCA3A3;
+$yellow-2 : #D0BF8F;
+$yellow-1 : #E0CF9F;
+$green-2  : #5F7F5F;
+$green_1  : #8FB28F;
+$green_2  : #9FC59F;
+$green_3  : #AFD8AF;
+$green_4  : #BFEBBF;
+$blue_1   : #94BFF3;
+$blue-1   : #7CB8BB;
+$blue-2   : #6CA0A3;
+$blue-3   : #5C888B;
+$blue-4   : #4C7073;
+$blue-5   : #366060;
+//}}}
+//{{{ Code
+.highlight {
+  font-family: $mono-font;
+  font-size: .875rem;
+  line-height: 1.4em;
+  > pre {
+    padding: .62em 1em .62em 1em;
+  }
+}
+//}}}
+//{{{ Site
+body {
+    color:      $fg;
+    background: $base6;
+    margin: 1em auto;
+    max-width: 46em;
+    padding: 0 .62em;
+    font-family: $main-font;
     a {
         &:link {
             color: $blue_1;
@@ -17,19 +82,63 @@
             color: $violet;
         }
     }
+    > header {
+        display: flex;
+        justify-content: space-between;
+        background: $bg-alt;
+        min-height: 26px;
+        padding-top: .62em;
+        padding-left: 1.5em;
+        padding-right: 1.5em;
+        border-top: 5px solid $fg-1;
+        border-bottom: 1px solid $fg-1;
+        a {
+            color: $yellow-2 !important;
+            &:hover {
+                color: $fg-alt !important;
+            }
+            &.active {
+                text-decoration: underline;
+                > i {
+                    text-decoration: underline;
+                }
+            }
+        }
+        > nav {
+            > ul {
+                display: flex;
+                justify-content: flex-end;
+                list-style: none;
+                margin: 0;
+                > li:not(:last-child) {
+                    padding-right: 1em;
+                }
+            }
+        }
+    }
+    > main {
+        background: $bg;
+        padding: .62em 2em 1.24em 2em;
+        border-bottom: 1px solid $bg-alt;
+    }
+    > footer {
+        background: $base5;
+        padding: 0 2.2em 0 2.2em;
+        border-bottom: 5px solid $base4;
+    }
 }
-
-body{
-    margin: 1em auto;
-    max-width: 40em;
-    padding: 0 .62em;
-    font: 1.2em/1.62 sans-serif;
-}
-h1,h2,h3 {
-    line-height: 1.2;
+ul.tags {
+    list-style: none;
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
+    > li:not(:last-child) {
+        padding-right: 1em;
+    }
 }
 @media print{
     body{
         max-width: none;
     }
 }
+//}}}

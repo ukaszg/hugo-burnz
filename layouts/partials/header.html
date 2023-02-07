@@ -4,7 +4,24 @@
 	<nav>
 		<ul>
 			{{ range . }}
-			<li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+				{{ $url := .URL | relLangURL }}
+				{{ with .Page }}
+					{{ $url = .RelPermalink }}
+				{{ end }}
+					<li>
+						<a href="{{ $url }}"
+							{{- if $.IsMenuCurrent `main` . | or ($.HasMenuCurrent `main` .) | or (eq $.RelPermalink $url) -}}
+								class="active"
+							{{- end -}}
+							{{- with .Title -}}
+								title="{{ . }}"
+							{{- end -}}
+							{{- if (urls.Parse $url).Host -}}
+						   		rel="noopener noreffer" target="_blank"
+							{{- end -}}>
+							{{- with .Pre }}{{ . | safeHTML }} {{end}}{{ with .Name }}{{ . | safeHTML }}{{ end }}{{ with .Post }} {{ . | safeHTML }}{{ end -}}
+						</a>
+				</li>
 			{{ end }}
 		</ul>
 	</nav>
