@@ -5,7 +5,7 @@ description = "Hugo theme."
 homepage = "https://github.com/ukaszg/theme/"
 tags = ["blog", "plain", "blank", "starter", "development"]
 features = ["blog"]
-min_version = "0.20"
+min_version = "0.92"
 
 [author]
   name = "ukaszg"
