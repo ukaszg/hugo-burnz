@@ -1,0 +1,30 @@
+#+title: Readme
+#+author: Łukasz Gruner
+#+email: lukasz@gruner.lu
+
+
+* Burnz
+:PROPERTIES:
+:CREATED:  [2023-02-07 18:08]
+:END:
+a simple [[https://gohugo.io/][Hugo]] theme using [[https://kippura.org/zenburnpage/][Zenburn]] colors.
+
+** Installation
+:PROPERTIES:
+:CREATED:  [2023-02-07 18:11]
+:END:
+From your site's root (where =config.toml= file is) run:
+#+begin_src sh
+git clone --recursive https://github.com/ukaszg/hugo-burnz.git themes/hugo-burnz
+#+end_src
+and then add to your =config.toml=:
+#+begin_src toml
+theme = "hugo-burnz"
+#+end_src
+For more information read the official [[https://gohugo.io/getting-started/quick-start/][quick start guide]] of Hugo.
+
+** License
+:PROPERTIES:
+:CREATED:  [2023-02-07 18:16]
+:END:
+This theme is released under the [[https://github.com/ukaszg/theme/blob/master/LICENSE][MIT license]].
