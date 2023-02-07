@@ -1,0 +1,6 @@
+[submodule "assets/style/fork-awesome"]
+	path = assets/style/fork-awesome
+	url = https://github.com/ForkAwesome/Fork-Awesome.git
+[submodule "assets/style/resetatron"]
+	path = assets/style/resetatron
+	url = https://github.com/charliewilco/resetatron.scss.git
