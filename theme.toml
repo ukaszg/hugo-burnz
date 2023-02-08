@@ -1,8 +1,8 @@
-name = "Theme"
+name = "Burnz"
 license = "MIT"
-licenselink = "https://github.com/ukaszg/theme/blob/master/LICENSE"
-description = "Hugo theme."
-homepage = "https://github.com/ukaszg/theme/"
+licenselink = "https://github.com/ukaszg/hugo-burnz/blob/master/LICENSE"
+description = "A simple Hugo theme using Zenburn colors."
+homepage = "https://github.com/ukaszg/hugo-burnz/"
 tags = ["blog", "plain", "blank", "starter", "development"]
 features = ["blog"]
 min_version = "0.92"

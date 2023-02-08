@@ -3,12 +3,14 @@
 		<article>
 			<header>
 				<h1>{{ .Title }}</h1>
-				{{ partial "clock.html" . }}
+                <span class='meta'>
+                    {{ partial "clock.html" . }}
+                    {{ partial "tags.html" . }}
+                </span>
 			</header>
 			<content>
 				{{ .Content }}
 			</content>
-			{{ partial "tags.html" . }}
 			{{ with .Site.DisqusShortname }}
 			<div id="disqus">
 				{{ template "_internal/disqus.html" . }}

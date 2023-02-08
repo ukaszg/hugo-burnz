@@ -1,10 +1,10 @@
 <main>
     {{ with .Site.Menus.about }}
-    <ul>
+    <ul class='about'>
         {{ range . }}
         <li>
-            <a href='{{ .URL }}' {{- with .Title -}} title='{{ . }}' {{- end -}} rel="noopener noreffer"
-                target="_blank">
+            <a href='{{ .URL }}' {{- with .Title -}} title='{{ . }}' {{- end -}} rel='noopener noreffer'
+                target='_blank'>
                 {{- with .Pre }}{{ . | safeHTML }} {{end}}{{ with .Name }}{{ . | safeHTML }}{{ end }}{{ with .Post }} {{
                 . | safeHTML }}{{ end -}}
             </a>
