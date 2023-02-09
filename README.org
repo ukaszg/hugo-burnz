@@ -8,6 +8,7 @@
 :CREATED:  [2023-02-07 18:08]
 :END:
 a simple [[https://gohugo.io/][Hugo]] theme using [[https://kippura.org/zenburnpage/][Zenburn]] colors.
+it's a work in progress (not yet complete).
 
 ** Installation
 :PROPERTIES:
