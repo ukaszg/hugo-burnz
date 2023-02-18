@@ -1,15 +1,55 @@
 <main>
-    {{ with .Site.Menus.about }}
-    <ul class='about'>
-        {{ range . }}
-        <li>
-            <a href='{{ .URL }}' {{- with .Title -}} title='{{ . }}' {{- end -}} rel='noopener noreffer'
-                target='_blank'>
-                {{- with .Pre }}{{ . | safeHTML }} {{end}}{{ with .Name }}{{ . | safeHTML }}{{ end }}{{ with .Post }} {{
-                . | safeHTML }}{{ end -}}
-            </a>
-        </li>
+    <header class='about'>
+        {{- $blockquote := .Site.Params.home.useBlockquote | default false -}}
+        {{- if $blockquote -}}
+        <blockquote class='info'>
+        {{- else -}}
+        <div class='info'>
+        {{- end -}}
+            {{ with .Site.Params.home.title | default (printf "About %s" .Site.Params.author) }}
+            <h1>{{ . }}</h1>
+            {{ end }}
+            {{ with .Site.Params.home.bio }}
+            <p>{{ . }}</p>
+            {{ end }}
+        {{ if $blockquote }}
+        </blockquote>
+        {{ else }}
+        </div>
         {{ end }}
-    </ul>
-    {{ end }}
+        <div class='avatar'{{ with .Site.Params.home.avatar.style }} style='{{ . | safeCSS }}'{{ end }}>
+            {{ if .Site.Params.home.avatar.file }}
+            <img src='{{ .Site.Params.home.avatar.file | absURL }}'
+                 {{- with .Site.Params.home.avatar.styleImg }} style='{{ . | safeCSS }}' {{ end -}}
+                 {{- with .Site.Params.home.avatar.height }} height='{{ . | safeHTMLAttr }}' {{ end -}}
+                 {{- with .Site.Params.home.avatar.width }} width='{{ . | safeHTMLAttr }}' {{ end -}}
+                 {{- with .Site.Params.home.avatar.alt }} alt='{{ . | safeHTMLAttr }}' {{ end -}}
+            />
+            {{ end }}
+            {{ with .Site.Menus.social }}
+            <ul>
+                {{ range . }}
+                <li>
+                    <a href='{{ .URL | safeURL }}'
+                    {{- with .Title }} title='{{ . }}' {{ end -}}
+                    {{- if (urls.Parse .URL).Host -}}
+                        rel="noopener noreffer" target="_blank"
+                    {{- end -}}>
+                        {{- with .Name }}{{ . | safeHTML }}{{ end -}}
+                    </a>
+                </li>
+                {{ end }}
+            </ul>
+            {{ end }}
+        </div>
+    </header>
+    <content>
+        {{ with .Site.Params.home.postsTitle | default "Some of my writing" }}
+        <h1>{{ . }}</h1>
+        {{ end }}
+        {{ $mainPosts := (sort ( where site.RegularPages "Type" "posts" ) "Date" "desc" )}}
+        {{ range first (.Site.Params.home.noOfPostsToShow | default 4) $mainPosts }}
+        {{ .Render "summary" }}
+        {{ end }}
+    </content>
 </main>

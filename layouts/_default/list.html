@@ -1,14 +1,14 @@
 {{ define "main" }}
-	<main>
-		{{ with .Title }}
-		<header>
-			<h1>{{ . }}</h1>
-		</header>
-		{{ end }}
+<main>
+    {{ with .Title }}
+    <header>
+        <h1>{{ . }}</h1>
+    </header>
+    {{ end }}
 
-		{{ range .Paginator.Pages }}
-			{{ .Render "summary" }}
-		{{ end }}
-		{{ partial "pagination.html" . }}
-	</main>
+    {{ range .Paginator.Pages }}
+    {{ .Render "summary" }}
+    {{ end }}
+    {{ partial "pagination.html" . }}
+</main>
 {{ end }}

@@ -1,0 +1,104 @@
+.highlight {
+  font-family: $mono-font;
+  font-size: .875rem;
+  line-height: 1.4em;
+  .chroma {
+    padding: .62rem 1rem .62rem 1rem;
+    color: $fg-alt;
+    background-color: $bg-alt;
+    /* Other */                    .x    {color: $missing;}
+    /* Error */                    .err  {color: $missing;}
+    /* LineTableTD */              .lntd {
+        vertical-align: top;
+        padding: 0;
+        margin: 0;
+        border: 0;
+    }
+    /* LineTable */                .lntable {
+        border-spacing: 0;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        width: auto;
+        overflow: auto;
+        display: block;
+    }
+    /* LineHighlight */            .hl  {display: block; width: 100%; background-color: $grey;}
+    /* LineNumbersTable */         .lnt {margin-right: .4em; padding: 0 .4em 0 .4em;}
+    /* LineNumbers */              .ln  {margin-right: .4em; padding: 0 .4em 0 .4em; background-color: $bg-alt;}
+    /* Keyword */                  .k   {color: $yellow;}
+    /* KeywordConstant */          .kc  {color: $missing;}
+    /* KeywordDeclaration */       .kd  {color: $yellow-2; font-weight: bold;}
+    /* KeywordNamespace */         .kn  {color: $yellow-2; font-weight: bold;}
+    /* KeywordPseudo */            .kp  {color: $green_4;}
+    /* KeywordReserved */          .kr  {color: $blue;}
+    /* KeywordType */              .kt  {color: $cyan;}
+    /* Name */                     .n   {color: $fg;}
+    /* NameAttribute */            .na  {color: $green_4;}
+    /* NameBuiltin */              .nb  {color: $yellow;}
+    /* NameBuiltinPseudo */        .bp  {color: $dark-cyan;}
+    /* NameClass */                .nc  {color: $cyan;}
+    /* NameConstant */             .no  {color: $fg;}
+    /* NameDecorator */            .nd  {color: $missing;}
+    /* NameEntity */               .ni  {color: $missing;}
+    /* NameException */            .ne  {color: $missing;}
+    /* NameFunction */             .nf  {color: $cyan;}
+    /* NameFunctionMagic */        .fm  {color: $missing;}
+    /* NameLabel */                .nl  {color: $missing;}
+    /* NameNamespace */            .nn  {color: $green_4;}
+    /* NameOther */                .nx  {color: $fg;}
+    /* NameProperty */             .py  {color: $missing;}
+    /* NameTag */                  .nt  {color: $missing;}
+    /* NameVariable */             .nv  {color: $cyan;}
+    /* NameVariableClass */        .vc  {color: $missing;}
+    /* NameVariableGlobal */       .vg  {color: $missing;}
+    /* NameVariableInstance */     .vi  {color: $missing;}
+    /* NameVariableMagic */        .vm  {color: $fg; font-weight: bold;}
+    /* Literal */                  .l   {color: $red_1;}
+    /* LiteralDate */              .ld  {color: $red_1;}
+    /* LiteralString */            .s   {color: $red_1;}
+    /* LiteralStringAffix */       .sa  {color: $red_1;}
+    /* LiteralStringBacktick */    .sb  {color: $red_1;}
+    /* LiteralStringChar */        .sc  {color: $red_1;}
+    /* LiteralStringDelimiter */   .dl  {color: $red_1;}
+    /* LiteralStringDoc */         .sd  {color: $red_1;}
+    /* LiteralStringDouble */      .s2  {color: $red_1;}
+    /* LiteralStringEscape */      .se  {color: $red_1;}
+    /* LiteralStringHeredoc */     .sh  {color: $red_1;}
+    /* LiteralStringInterpol */    .si  {color: $red_1;}
+    /* LiteralStringOther */       .sx  {color: $red_1;}
+    /* LiteralStringRegex */       .sr  {color: $red_1;}
+    /* LiteralStringSingle */      .s1  {color: $red_1;}
+    /* LiteralStringSymbol */      .ss  {color: $orange;}
+    /* LiteralNumber */            .m   {color: $fg; font-weight: bold;}
+    /* LiteralNumberBin */         .mb  {color: $fg; font-weight: bold;}
+    /* LiteralNumberFloat */       .mf  {color: $magenta; font-weight: bold;}
+    /* LiteralNumberHex */         .mh  {color: $magenta; font-weight: bold;}
+    /* LiteralNumberInteger */     .mi  {color: $fg; font-weight: bold;}
+    /* LiteralNumberIntegerLong */ .il  {color: $fg; font-weight: bold;}
+    /* LiteralNumberOct */         .mo  {color: $magenta; font-weight: bold;}
+    /* Operator */                 .o   {color: $fg-alt;}
+    /* OperatorWord */             .ow  {color: $fg-alt;}
+    /* Punctuation */              .p   {color: $fg-alt;}
+    /* Comment */                  .c   {color: $green_2;}
+    /* CommentHashbang */          .ch  {color: $green_2;}
+    /* CommentMultiline */         .cm  {color: $green_2;}
+    /* CommentSingle */            .c1  {color: $green_2;}
+    /* CommentSpecial */           .cs  {color: $green_2;}
+    /* CommentPreproc */           .cp  {color: $magenta;}
+    /* CommentPreprocFile */       .cpf {color: $green_2;}
+    /* Generic */                  .g   {color: $missing;}
+    /* GenericDeleted */           .gd  {color: $missing;}
+    /* GenericEmph */              .ge  {font-style: italic;}
+    /* GenericError */             .gr  {color: $missing; font-weight: bold;}
+    /* GenericHeading */           .gh  {color: $missing;}
+    /* GenericInserted */          .gi  {color: $missing;}
+    /* GenericOutput */            .go  {color: $missing;}
+    /* GenericPrompt */            .gp  {color: $missing;}
+    /* GenericStrong */            .gs  {font-weight: bold;}
+    /* GenericSubheading */        .gu  {color: $missing;}
+    /* GenericTraceback */         .gt  {color: $missing;}
+    /* GenericUnderline */         .gl  {color: $missing;}
+    /* TextWhitespace */           .w   {color: $grey;}
+  }
+}

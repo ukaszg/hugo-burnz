@@ -3,7 +3,7 @@ license = "MIT"
 licenselink = "https://github.com/ukaszg/hugo-burnz/blob/master/LICENSE"
 description = "A simple Hugo theme using Zenburn colors."
 homepage = "https://github.com/ukaszg/hugo-burnz/"
-tags = ["blog", "plain", "blank", "starter", "development"]
+tags = ["blog", "plain", "zenburn"]
 features = ["blog"]
 min_version = "0.92"
 

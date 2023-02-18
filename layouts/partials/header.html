@@ -1,29 +1,29 @@
 <header>
-	<a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
-	{{ with .Site.Menus.main }}
-	<nav>
-		<ul>
-			{{ range . }}
-				{{ $url := .URL | relLangURL }}
-				{{ with .Page }}
-					{{ $url = .RelPermalink }}
-				{{ end }}
-					<li>
-						<a href="{{ $url }}"
-							{{- if $.IsMenuCurrent `main` . | or ($.HasMenuCurrent `main` .) | or (eq $.RelPermalink $url) -}}
-								class="active"
-							{{- end -}}
-							{{- with .Title -}}
-								title="{{ . }}"
-							{{- end -}}
-							{{- if (urls.Parse $url).Host -}}
-						   		rel="noopener noreffer" target="_blank"
-							{{- end -}}>
-							{{- with .Pre }}{{ . | safeHTML }} {{end}}{{ with .Name }}{{ . | safeHTML }}{{ end }}{{ with .Post }} {{ . | safeHTML }}{{ end -}}
-						</a>
-				</li>
-			{{ end }}
-		</ul>
-	</nav>
-	{{ end }}
+    <a class='active' href="{{ .Site.BaseURL }}">
+      {{- .Site.Title -}}
+    </a>
+    {{ with .Site.Menus.main }}
+    <nav>
+        <ul>
+            {{ range . }}
+            {{ $url := .URL | safeURL | relLangURL }}
+            {{ with .Page }}
+            {{ $url = .RelPermalink }}
+            {{ end }}
+            <li>
+                <a href="{{ $url }}"
+                   {{- if $.IsMenuCurrent `main` . | or ($.HasMenuCurrent `main` .) | or (eq $.RelPermalink $url) -}}
+                   class="active"
+                   {{- end -}}
+                   {{- with .Title -}} title="{{ . }}" {{- end -}}
+                   {{- if (urls.Parse $url).Host -}}
+                   rel="noopener noreffer" target="_blank"
+                   {{- end -}}>
+                    {{ .Name | safeHTML }}
+                </a>
+            </li>
+            {{ end }}
+        </ul>
+    </nav>
+    {{ end }}
 </header>

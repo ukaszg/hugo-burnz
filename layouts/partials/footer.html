@@ -1,16 +1,21 @@
 <footer>
 	<p>
-        &copy;
+        <i class="fa fa-copyright" aria-hidden="true"></i>
         {{ if (and .Site.Params.since (lt .Site.Params.since now.Year)) }}
             {{ .Site.Params.since }} -
         {{ end }}
         {{ now.Year }}
         {{ with .Site.Params.author }} {{ . }} {{ end }}
         ·
-        {{ if (and .Site.Params.license) }}
-            Licensed under {{ .Site.Params.license | safeHTML }}
+        {{ if .Site.Params.copyright }}
+            Licensed under {{ .Site.Params.copyright | safeHTML }}
         ·
         {{ end }}
-        Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/ukaszg/hugo-burnz/">Burnz</a>.
+        Powered by
+        {{ if .Site.Params.powered_by }}
+        {{ .Site.Params.powered_by | safeHTML }}
+        {{ else }}
+        <a href='https://gohugo.io/'>Hugo</a> & <a href='https://github.com/ukaszg/hugo-burnz/'>Burnz</a>.
+        {{ end }}
     </p>
 </footer>

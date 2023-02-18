@@ -1,37 +1,85 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode | default "en-us" }}" dir="{{ .Language.LanguageDirection | default "auto" }}">
+<html lang='{{ .Site.LanguageCode | default "en-gb" }}'
+      dir='{{ .Language.LanguageDirection | default "ltr" }}'>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>{{ .Title }}</title>
-	{{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
-	{{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+        {{- if .IsHome -}}
+            {{ .Site.Params.author }} · {{ site.Title }}
+        {{- else -}}
+            {{ .Title }} · {{ site.Title }}
+        {{- end -}}
+    </title>
+    {{- with .Site.Params.description }}
+    <meta name="description" content="{{ . }}">
+    {{ end -}}
+    {{- with .Site.Params.author }}
+    <meta name="author" content="{{ . }}">
+    {{ end -}}
+    {{- with .Params.tags }}
+    <meta name="keywords" content='{{ range $i, $e := . }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}' />
+    {{ end -}}
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     {{- if hugo.IsProduction | or (eq .Site.Params.env "production") }}
     <meta name="robots" content="index, follow">
     {{ else }}
     <meta name="robots" content="noindex, nofollow">
     {{ end -}}
-    <link rel="icon" href="{{ .Site.Params.assets.favicon | default "favicon.ico" | absURL }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ .Site.Params.assets.favicon16x16 | default "favicon-16x16.png" | absURL }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ .Site.Params.assets.favicon32x32 | default "favicon-32x32.png" | absURL }}">
+    {{- hugo.Generator -}}
+    {{- with .Site.Params.icons.favicon }}
+    <link rel="icon" href="{{ . | absURL }}">
+    {{ end -}}
+    {{- with .Site.Params.icons.favicon16 }}
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ . | absURL }}">
+    {{ end -}}
+    {{- with .Site.Params.icons.favicon32 }}
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ . | absURL }}">
+    {{ end -}}
     <link rel="canonical" href="{{ .Permalink }}" />
     {{- if .PrevInSection -}}
-        <link rel="prev" href="{{ .PrevInSection.Permalink }}" />
+    <link rel="prev" href="{{ .PrevInSection.Permalink }}" />
     {{- end -}}
     {{- if .NextInSection -}}
-        <link rel="next" href="{{ .NextInSection.Permalink }}" />
+    <link rel="next" href="{{ .NextInSection.Permalink }}" />
     {{- end -}}
-    {{- $options := (dict "targetPath" "style.css" "outputStyle" "compressed" "enableSourceMap" (not hugo.IsProduction)) -}}
-    {{- $sass := resources.Get "style/style.scss" -}}
-    {{- $style := $sass | resources.ToCSS $options | resources.Minify | resources.Fingerprint "sha512" -}}
+    {{- if .OutputFormats.Get "rss" }}
+    <link rel="alternate" type="application/rss+xml" href='{{ "posts/index.xml" | absURL }}' title='{{ .Site.Title }}'>
+    {{ end }}
+    {{ if .IsPage }}
+    {{ $iso8601 := "2006-01-02T15:04:05-07:00" -}}
+    {{ with .PublishDate }}
+    <meta itemprop="datePublished" {{ .Format $iso8601 | printf "content=%q" | safeHTMLAttr }} />
+    {{ end }}
+    {{ with .Lastmod }}
+    <meta itemprop="dateModified" {{ .Format $iso8601 | printf "content=%q" | safeHTMLAttr }} />
+    {{ end }}
+    <meta itemprop="wordCount" content="{{ .WordCount }}">
+    {{ end }}
+    <meta name="google-site-verification" content="{{ site.Params.analytics.google.SiteVerificationTag }}">
+    {{- if site.Params.analytics.yandex.SiteVerificationTag }}
+    <meta name="yandex-verification" content="{{ site.Params.analytics.yandex.SiteVerificationTag }}">
+    {{- end }}
+    {{- if site.Params.analytics.bing.SiteVerificationTag }}
+    <meta name="msvalidate.01" content="{{ site.Params.analytics.bing.SiteVerificationTag }}">
+    {{- end }}
+    {{- if site.Params.analytics.naver.SiteVerificationTag }}
+    <meta name="naver-site-verification" content="{{ site.Params.analytics.naver.SiteVerificationTag }}">
+    {{- end }}
+    {{- $options := (dict "outputStyle" "compressed" "enableSourceMap" (not hugo.IsProduction)) -}}
+    {{- $scss := (resources.Get "style/style.scss" | resources.ExecuteAsTemplate "style.scss" .) -}}
+    {{- $style := $scss | resources.ToCSS $options | resources.Minify | resources.Fingerprint "sha512" -}}
     <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
 </head>
+
 <body>
-	{{ partial "header" . }}
-	{{ block "main" . }}{{ end }}
-	{{ partial "footer" . }}
-    {{ template "_internal/google_analytics.html" . }}
+    {{ partial "header" . }}
+    {{ block "main" . }}{{ end }}
+    {{ partial "footer" . }}
+    {{ if or hugo.IsProduction (eq site.Params.env "production") }}
+        {{ template "_internal/google_analytics_async.html" . }}
+    {{ end }}
 </body>
+
 </html>

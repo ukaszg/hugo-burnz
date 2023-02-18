@@ -1,0 +1,59 @@
+{{ $icon_class_name := "fa-lg" }}
+{{ $common_attr := "rel='noreferrer noopener' target='_blank' onclick='document.getElementById(\"share_links\").classList.add(\"is-hidden\");'" }}
+<span id="share">
+    <a
+      onclick="document.getElementById('share_links').classList.toggle('is-hidden');"
+      title="Share">
+        <i class="fa fa-share-alt {{ $icon_class_name }}" aria-hidden="true"></i>
+    </a>
+    <ul id="share_links" class="is-hidden">
+        <li>
+            <a href="http://www.facebook.com/sharer.php?u={{ .Permalink }}"
+              title="Share on Facebook"
+              {{ $common_attr | safeHTMLAttr }}
+              aria-label="Facebook">
+                <i class="fa fa-facebook-square {{ $icon_class_name }}" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://twitter.com/share?url={{ .Permalink }}&text={{ .Title }}"
+              title="Share on Twitter"
+              {{ $common_attr | safeHTMLAttr }}
+              aria-label="Twitter">
+                <i class="fa fa-twitter-square {{ $icon_class_name }}" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li>
+            <a href="http://www.linkedin.com/shareArticle?url={{ .Permalink }}&title={{ .Title }}"
+              title="Share on Linkedin"
+              {{ $common_attr | safeHTMLAttr }}
+              aria-label="Linkedin">
+                <i class="fa fa-linkedin-square {{ $icon_class_name }}" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://getpocket.com/save?url={{ .Permalink }}&title={{ .Title }}"
+              title="Save to Pocket"
+              {{ $common_attr | safeHTMLAttr }}
+              aria-label="Pocket">
+                <i class="fa fa-get-pocket {{ $icon_class_name }}" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://reddit.com/submit?url={{ .Permalink }}&title={{ .Title }}"
+              title="Share on Reddit"
+              {{ $common_attr | safeHTMLAttr }}
+              aria-label="Reddit">
+                <i class="fa fa-reddit {{ $icon_class_name }}" aria-hidden="true"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://news.ycombinator.com/submitlink?u={{ .Permalink }}&t={{ .Title }}"
+              title="Submit to Hacker News"
+              {{ $common_attr | safeHTMLAttr }}
+              aria-label="Hacker News">
+                <i class="fa fa-hacker-news {{ $icon_class_name }}" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</span>

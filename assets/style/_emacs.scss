@@ -1,0 +1,174 @@
+.org-src-container {
+  border: .1rem solid $codeCaptionBg;
+  box-shadow: .1rem .1rem .1rem $codeCaptionBg;
+  font-family: $mono-font;
+  font-size: $code-size;
+  margin: 1em auto;
+  padding: .1em .5em;
+  position: relative;
+  background-color: $bg-alt;
+  label.org-src-name {
+    background-color: $codeCaptionBg;
+    color: $fg;
+    border-bottom-right-radius: .5em;
+    border: 0;
+    position: relative;
+    top: 0;
+    left: -.5rem;
+    padding: .3rem .5rem .15rem .5rem;
+    font-family: $main-font;
+    font-weight: bold;
+    span.listing-number {
+      display: $showListingNo;
+      font-weight: normal;
+      color: $fg-alt;
+    }
+  }
+  pre {
+    font-family: $mono-font;
+    font-size: $code-size;
+    code {
+      font-family: $mono-font;
+      font-size: $code-size;
+    }
+    &:before {
+      display: block;
+      position: absolute;
+      background-color: $codeCaptionBg;
+      top: 0;
+      right: 0;
+      padding: 0 0.5em;
+      border-bottom-left-radius: .5em;
+      border: 0;
+      color: $fg;
+      font-size: $code-size;
+      font-family: $main-font;
+    }
+    &.src:before {
+      background-color: $codeCaptionBg;
+      color:$yellow;
+      font-weight: bold;
+      display: inline;
+    }
+    &.src {
+      color: $fg;
+      .org-highlight-quoted-quote {
+        color: $blue;
+      }
+      .org-highlight-quoted-symbol {
+        color: $blue-1;
+      }
+      .org-preprocessor {
+        color: $blue;
+      }
+      .org-variable-name {
+        color: $orange;
+      }
+      .org-string {
+        color: $red;
+      }
+      .org-type {
+        color: $yellow-2;
+        font-weight: bold;
+      }
+      .org-function-name {
+        color: $blue;
+        font-weight: bold;
+      }
+      .org-keyword {
+        color: $yellow;
+        font-weight: bold;
+      }
+      .org-comment {
+        color: $green;
+      }
+      .org-doc {
+        color: $green_2;
+      }
+      .org-comment-delimiter {
+        color: $green_4;
+      }
+      .org-constant {
+        color: $green_4;
+      }
+      .org-builtin {
+        color: $fg;
+        font-weight: bold;
+      }
+    }
+  }
+  > pre.src-sh:before             {content: 'sh';}
+  > pre.src-bash:before           {content: 'bash';}
+  > pre.src-fish:before           {content: 'fish';}
+  > pre.src-emacs-lisp:before     {content: 'Emacs Lisp';}
+  > pre.src-elisp:before          {content: 'Emacs Lisp';}
+  > pre.src-R:before              {content: 'R';}
+  > pre.src-org:before            {content: 'Org';}
+  > pre.src-cpp:before            {content: 'C++';}
+  > pre.src-c:before              {content: 'C';}
+  > pre.src-html:before           {content: 'HTML'}
+  > pre.src-js:before             {content: 'Javascript'}
+  > pre.src-javascript:before     {content: 'Javascript'}
+  > pre.src-abc:before            {content: 'ABC';}
+  > pre.src-asymptote:before      {content: 'Asymptote';}
+  > pre.src-awk:before            {content: 'Awk';}
+  > pre.src-C:before              {content: 'C';}
+  > pre.src-calc:before           {content: 'Calc';}
+  > pre.src-clojure:before        {content: 'Clojure';}
+  > pre.src-comint:before         {content: 'comint';}
+  > pre.src-css:before            {content: 'CSS';}
+  > pre.src-D:before              {content: 'D';}
+  > pre.src-ditaa:before          {content: 'Ditaa';}
+  > pre.src-dot:before            {content: 'Dot';}
+  > pre.src-ebnf:before           {content: 'ebnf';}
+  > pre.src-forth:before          {content: 'Forth';}
+  > pre.src-F90:before            {content: 'Fortran';}
+  > pre.src-gnuplot:before        {content: 'Gnuplot';}
+  > pre.src-haskell:before        {content: 'Haskell';}
+  > pre.src-io:before             {content: 'Io';}
+  > pre.src-java:before           {content: 'Java';}
+  > pre.src-julia:before          {content: 'Julia';}
+  > pre.src-jupyter-julia:before  {content: 'Julia';}
+  > pre.src-jupyter-python:before {content: 'Python';}
+  > pre.src-latex:before          {content: 'LaTeX';}
+  > pre.src-ledger:before         {content: 'Ledger';}
+  > pre.src-ly:before             {content: 'Lilypond';}
+  > pre.src-lisp:before           {content: 'Lisp';}
+  > pre.src-makefile:before       {content: 'Make';}
+  > pre.src-matlab:before         {content: 'Matlab';}
+  > pre.src-max:before            {content: 'Maxima';}
+  > pre.src-mscgen:before         {content: 'Mscgen';}
+  > pre.src-Caml:before           {content: 'Objective';}
+  > pre.src-octave:before         {content: 'Octave';}
+  > pre.src-org:before            {content: 'Org';}
+  > pre.src-perl:before           {content: 'Perl';}
+  > pre.src-picolisp:before       {content: 'Picolisp';}
+  > pre.src-plantuml:before       {content: 'PlantUML';}
+  > pre.src-python:before         {content: 'Python';}
+  > pre.src-ruby:before           {content: 'Ruby';}
+  > pre.src-sass:before           {content: 'Sass';}
+  > pre.src-scala:before          {content: 'Scala';}
+  > pre.src-scheme:before         {content: 'Scheme';}
+  > pre.src-screen:before         {content: 'Screen';}
+  > pre.src-sed:before            {content: 'Sed';}
+  > pre.src-shell:before          {content: 'shell';}
+  > pre.src-shen:before           {content: 'Shen';}
+  > pre.src-sql:before            {content: 'SQL';}
+  > pre.src-sqlite:before         {content: 'SQLite';}
+  > pre.src-stan:before           {content: 'Stan';}
+  > pre.src-vala:before           {content: 'Vala';}
+  > pre.src-axiom:before          {content: 'Axiom';}
+  > pre.src-browser:before        {content: 'HTML';}
+  > pre.src-cypher:before         {content: 'Neo4j';}
+  > pre.src-elixir:before         {content: 'Elixir';}
+  > pre.src-request:before        {content: 'http';}
+  > pre.src-ipython:before        {content: 'iPython';}
+  > pre.src-kotlin:before         {content: 'Kotlin';}
+  > pre.src-mongo:before          {content: 'MongoDB';}
+  > pre.src-prolog:before         {content: 'Prolog';}
+  > pre.src-rec:before            {content: 'rec';}
+  > pre.src-typescript:before     {content: 'Typescript';}
+  > pre.src-rust:before           {content: 'Rust';}
+  > pre.src-yaml:before           {content: 'YAML';}
+  > pre.src-yml:before            {content: 'YAML';}
+}

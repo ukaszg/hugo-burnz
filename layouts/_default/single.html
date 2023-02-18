@@ -1,21 +1,26 @@
 {{ define "main" }}
-	<main>
-		<article>
-			<header>
-				<h1>{{ .Title }}</h1>
-                <span class='meta'>
+<main>
+    <article>
+        <header>
+            <h1>{{ .Title }}</h1>
+            <span class='meta'>
+                <span class="left">
                     {{ partial "clock.html" . }}
                     {{ partial "tags.html" . }}
                 </span>
-			</header>
-			<content>
-				{{ .Content }}
-			</content>
-			{{ with .Site.DisqusShortname }}
-			<div id="disqus">
-				{{ template "_internal/disqus.html" . }}
-			</div>
-			{{ end }}
-		</article>
-	</main>
+                <span class="right">
+                    {{ partial "share.html" . }}
+                </span>
+            </span>
+        </header>
+        <content>
+            {{ .Content }}
+        </content>
+        {{ with .Site.DisqusShortname }}
+        <footer id="disqus">
+            {{ template "_internal/disqus.html" . }}
+        </footer>
+        {{ end }}
+    </article>
+</main>
 {{ end }}

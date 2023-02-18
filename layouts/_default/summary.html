@@ -1,7 +1,9 @@
 <article class='summary'>
-    <h1><a href='{{ .Permalink }}'>{{ .Title }}</a></h1>
-    <span class='meta'>
+    <h4>
         {{ partial "clock.html" . }}
-        {{ partial "tags.html" . }}
-    </span>
+        <span>
+            <a href='{{ .Permalink }}'>{{ .Title }}</a>
+            {{ partial "tags.html" . }}
+        </span>
+    </h4>
 </article>
