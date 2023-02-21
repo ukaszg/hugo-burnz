@@ -1,4 +1,4 @@
-module gitlab.com/ukaszg/hugo-burnz
+module github.com/ukaszg/hugo-burnz
 
 go 1.18
 
