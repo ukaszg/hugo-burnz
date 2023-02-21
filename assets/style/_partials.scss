@@ -184,7 +184,7 @@ body > footer {
   flex-direction: row;
   justify-content: center;
   p {
-    font-size: .7rem;
+    font-size: $baseFontSize * 0.7;
   }
 }
 
@@ -255,5 +255,24 @@ body > main {
         margin-left: 1rem;
       }
     }
+  }
+}
+
+/// Terms
+ul.terms {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  > li {
+    padding: .3rem .5rem;
+    color: $tagFg;
+    background-color: $textAccent;
+    border-radius: .7rem;
+    border: .1rem solid $textDarkBg;
+    margin-left: 1rem;
+    margin-bottom: .8rem;
   }
 }

@@ -1,0 +1,11 @@
+module:
+  hugoVersion:
+    min: 0.92.0
+    extended: true
+  imports:
+    - path: github.com/ForkAwesome/Fork-Awesome
+      mounts:
+        - source: fonts
+          target: static/fonts
+        - source: scss
+          target: assets/style/fa

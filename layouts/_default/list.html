@@ -1,18 +1,22 @@
 {{ define "main" }}
 <main>
-    {{ with .Title }}
+    {{ if .Title }}
     <header>
-        <h1>{{ . }}</h1>
+        <h1>{{ .Title }}</h1>
+        {{ with .Description }}<div>{{ . }}</div>{{ end }}
     </header>
     {{ end }}
+
     {{ with .Content }}
     <article>{{ . }}</article>
     {{ end }}
+
     <section>
     {{ range .Paginator.Pages }}
     {{ .Render "summary" }}
     {{ end }}
     </section>
+
     <footer>
     {{ partial "pagination.html" . }}
     </footer>

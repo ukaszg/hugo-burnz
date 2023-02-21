@@ -1,0 +1,35 @@
+{{ define "main" }}
+<main>
+    {{ if .Title }}
+    <header>
+        <h1>{{ .Title }}</h1>
+        {{ with .Description }}<div>{{ . }}</div>{{ end }}
+    </header>
+    {{ end }}
+
+    {{ with .Content }}
+    <article>{{ . }}</article>
+    {{ end }}
+
+    <section>
+        <ul class="terms">
+            {{ $type := .Type }}
+            {{ range $key, $value := .Data.Terms.Alphabetical }}
+            {{ $name := .Name }}
+            {{ $count := .Count }}
+            {{ with site.GetPage (printf "/%s/%s" $type $name) }}
+            <li>
+                <a href="{{ .Permalink }}">
+                  <i class='fa fa-tag' aria-hidden='true'></i>
+                  &nbsp;
+                  {{- .Name -}}
+                  &nbsp;
+                  <sup><strong>{{ $count }}</strong></sup>
+                </a>
+            </li>
+            {{ end }}
+            {{ end }}
+        </ul>
+    </section>
+</main>
+{{ end }}

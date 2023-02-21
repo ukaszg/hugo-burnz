@@ -1,0 +1,20 @@
+name: Burnz
+license: MIT
+licenselink: 'https://github.com/ukaszg/hugo-burnz/blob/master/LICENSE'
+description: A simple Hugo theme using Zenburn colors.
+homepage: 'https://github.com/ukaszg/hugo-burnz/'
+tags:
+  - blog
+  - plain
+  - zenburn
+features:
+  - blog
+min_version: '0.92'
+author:
+  name: ukaszg
+  homepage: 'https://github.com/ukaszg'
+original:
+  name: Blank
+  author: Vimux
+  homepage: 'https://github.com/vimux/blank/'
+  repo: 'https://github.com/vimux/blank/'

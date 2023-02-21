@@ -11,10 +11,13 @@
                 {{ partial "share.html" . }}
             </span>
         </span>
+        {{ with .Description }}<div>{{ . }}</div>{{ end }}
     </header>
-    <article>
-        {{ .Content }}
-    </article>
+
+    {{ with .Content }}
+    <article>{{ . }}</article>
+    {{ end }}
+
     {{ with .Site.DisqusShortname }}
     <footer id="disqus">
         {{ template "_internal/disqus.html" . }}

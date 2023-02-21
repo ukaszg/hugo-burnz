@@ -2,7 +2,7 @@
 <ul class='tags'>
     {{- range . -}}
     <li><a href='{{ "/tags/" | relLangURL }}{{ . | urlize }}'>
-            <i class='fa fa-tag' aria-hidden='true'>&nbsp;{{ . }}</i>
+            <i class='fa fa-tag' aria-hidden='true'></i>&nbsp;{{ . }}
         </a></li>
     {{- end -}}
 </ul>
