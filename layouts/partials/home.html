@@ -1,36 +1,38 @@
 <main>
     <header class='about'>
-        {{- $blockquote := .Site.Params.home.useBlockquote | default false -}}
+        {{- $blockquote := .Site.Params.burnz.home.bio.blockquote | default false -}}
         {{- if $blockquote -}}
         <blockquote class='info'>
         {{- else -}}
-        <div class='info'>
+        <article class='info'>
         {{- end -}}
-            {{ with .Site.Params.home.title | default (printf "About %s" .Site.Params.author) }}
+            {{ with .Site.Params.burnz.home.bio.title | default "About" }}
             <h1>{{ . }}</h1>
             {{ end }}
-            {{ with .Site.Params.home.bio }}
+            {{ if .Site.Params.burnz.home.bio.content }}
+            {{ range .Site.Params.burnz.home.bio.content }}
             <p>{{ . }}</p>
+            {{ end }}
+            {{ else }}
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             {{ end }}
         {{ if $blockquote }}
         </blockquote>
         {{ else }}
-        </div>
+        </article>
         {{ end }}
-        <div class='avatar'{{ with .Site.Params.home.avatar.style }} style='{{ . | safeCSS }}'{{ end }}>
-            {{ if .Site.Params.home.avatar.file }}
-            <img src='{{ .Site.Params.home.avatar.file | absURL }}'
-                 {{- with .Site.Params.home.avatar.styleImg }} style='{{ . | safeCSS }}' {{ end -}}
-                 {{- with .Site.Params.home.avatar.height }} height='{{ . | safeHTMLAttr }}' {{ end -}}
-                 {{- with .Site.Params.home.avatar.width }} width='{{ . | safeHTMLAttr }}' {{ end -}}
-                 {{- with .Site.Params.home.avatar.alt }} alt='{{ . | safeHTMLAttr }}' {{ end -}}
+        <div class='avatar'>
+            <img src='{{ .Site.Params.burnz.home.photo.src | default "img/default_photo.png" | absURL }}'
+                 height='{{ .Site.Params.burnz.home.photo.height | default "250px" }}'
+                 width='{{ .Site.Params.burnz.home.photo.width | default "250px" }}'
+                 alt='{{ .Site.Params.burnz.home.photo.alt | default .Site.Params.author }}'
             />
-            {{ end }}
             {{ with .Site.Menus.social }}
             <ul>
                 {{ range . }}
                 <li>
-                    <a href='{{ .URL | safeURL }}'
+                    <a href='{{ .URL | safeURL | absURL }}'
                     {{- with .Title }} title='{{ . }}' {{ end -}}
                     {{- if (urls.Parse .URL).Host -}}
                         rel="noopener noreffer" target="_blank"
@@ -43,13 +45,13 @@
             {{ end }}
         </div>
     </header>
-    <content>
-        {{ with .Site.Params.home.postsTitle | default "Some of my writing" }}
+    <section>
+        {{ with .Site.Params.burnz.home.posts.title | default "Latest posts" }}
         <h1>{{ . }}</h1>
         {{ end }}
         {{ $mainPosts := (sort ( where site.RegularPages "Type" "posts" ) "Date" "desc" )}}
-        {{ range first (.Site.Params.home.noOfPostsToShow | default 4) $mainPosts }}
+        {{ range first (.Site.Params.burnz.home.posts.amount | default 5) $mainPosts }}
         {{ .Render "summary" }}
         {{ end }}
-    </content>
+    </section>
 </main>

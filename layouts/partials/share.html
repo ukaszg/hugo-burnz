@@ -1,12 +1,12 @@
 {{ $icon_class_name := "fa-lg" }}
-{{ $common_attr := "rel='noreferrer noopener' target='_blank' onclick='document.getElementById(\"share_links\").classList.add(\"is-hidden\");'" }}
+{{ $common_attr := "rel='noreferrer noopener' target='_blank' onclick='document.getElementById(\"share_links\").classList.add(\"hidden\");'" }}
 <span id="share">
-    <a
-      onclick="document.getElementById('share_links').classList.toggle('is-hidden');"
+    <a onclick="document.getElementById('share_links').classList.toggle('hidden');"
+      aria-label="Share"
       title="Share">
         <i class="fa fa-share-alt {{ $icon_class_name }}" aria-hidden="true"></i>
     </a>
-    <ul id="share_links" class="is-hidden">
+    <ul id="share_links" class="hidden">
         <li>
             <a href="http://www.facebook.com/sharer.php?u={{ .Permalink }}"
               title="Share on Facebook"

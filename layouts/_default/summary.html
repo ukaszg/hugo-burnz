@@ -1,9 +1,14 @@
 <article class='summary'>
-    <h4>
+    <span class="clock">
         {{ partial "clock.html" . }}
-        <span>
-            <a href='{{ .Permalink }}'>{{ .Title }}</a>
-            {{ partial "tags.html" . }}
-        </span>
-    </h4>
+    </span>
+    <span class="post">
+        <h3><a href='{{ .Permalink }}' title='{{ .Title }}'>{{ .Title }}</a></h3>
+        {{ partial "tags.html" . }}
+    </span>
+    <span class="details">
+        <p>{{ .WordCount }} word{{ if (ge .WordCount 2) }}s{{ end }}</p>
+        <p class="small">read in</p>
+        <p>{{ .ReadingTime }} minute{{ if (ge .ReadingTime 2) }}s{{ end }}</p>
+    </span>
 </article>

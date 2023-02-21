@@ -1,0 +1,259 @@
+/// Home
+.about {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  .info {
+    margin-top: 1.5rem;
+    margin-right: 2rem;
+    width: 20rem;
+    flex-grow: 99;
+  }
+  .avatar {
+    flex-shrink: 0;
+    margin-top: .5rem;
+    border: .25rem $homeSocialBg solid;
+    border-radius: .6rem;
+    background-color: $homeSocialBg;
+    img {
+      border-radius: .6rem;
+    }
+    ul {
+      list-style: none;
+      margin: 0;
+      display: flex;
+      justify-content: space-evenly;
+      flex-direction: row;
+      a {
+        color: $homeSocialFg;
+        &:hover, &:hover:visited {
+          color: $homeSocialHover;
+        }
+        &:visited {
+          color: $homeSocialFg;
+        }
+      }
+    }
+  }
+}
+
+/// Share
+#share {
+  position: relative;
+  a {
+    color: $shareFg;
+    &:visited {
+      color: $shareFg;
+    }
+    &:hover, &:hover:visited {
+      color: $textDarkFg;
+    }
+  }
+  ul#share_links {
+    list-style: none;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: absolute;
+    right: 1.5rem;
+    top: -.35rem;
+    background-color: $textDarkBg;
+    border: .2rem $textAccent solid;
+    padding: .2rem .5rem;
+    border-radius: .5rem;
+    opacity: 1;
+    transition: opacity 400ms;
+    &.hidden {
+      opacity: 0;
+      transition: opacity 400ms;
+    }
+    > li:not(:last-child) {
+      margin-right: .7rem;
+    }
+  }
+}
+
+/// Tags
+ul.tags {
+  list-style: none;
+  margin: 0;
+  display: flex;
+  justify-content: flex-start;
+  a {
+    color: $tagFg;
+    &:visited, &:link {
+      color: $tagFg;
+    }
+    &:hover, &:hover:visited {
+      color: $tagHover;
+    }
+  }
+  > li:not(:last-child) {
+    margin-right: 1rem;
+  }
+}
+
+/// Clock
+time {
+  color: $timeFg;
+}
+
+/// Pagination
+#pagination {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  a {
+    padding: 0 .6rem 0 .6rem;
+    &.disabled {
+      color: $textAccent;
+      cursor: not-allowed !important;
+      pointer-events: none;
+      display: inline-block;
+    }
+  }
+}
+
+/// Summary
+article.summary {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  &:nth-child(even) {
+    background-color: darken($textBg, 1%);
+    border-radius: .25rem;
+  }
+  > span {
+    height: 3.5rem;
+  }
+  > .clock {
+    flex-shrink: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding-right: .3rem;
+    padding-left: .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  > .post {
+    flex-grow: 99;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: "[..]";
+    margin-left: .7rem;
+    margin-right: 0;
+  }
+  > .details {
+    flex-shrink: 0;
+    color: $textDarkFg;
+    width: 6.25rem;
+    border-left: .2rem $textAccent solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    p {
+      padding: 0;
+      margin: 0 auto;
+      text-align: center;
+      &.small {
+        font-size: $baseFontSize * 0.6;
+        line-height: .5;
+      }
+    }
+  }
+}
+
+/// Footer
+body > footer {
+  background: $footerBg;
+  padding: 0 2.2rem 0 2.2rem;
+  border-bottom: .2rem solid $footerAccent;
+  border-top: .12rem solid $footerAccent;
+  color: $textDarkFg;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  p {
+    font-size: .7rem;
+  }
+}
+
+/// Header
+body > header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  background: $headerBg;
+  min-height: 1.6rem;
+  padding: .3rem 1.5rem .2rem 1.5rem;
+  border-top: .35rem solid $headerAccent;
+  border-bottom: .1rem solid $headerAccent;
+  a {
+    color: $headerFg !important;
+    &:hover, &:hover:visited {
+      color: $headerHover !important;
+    }
+    &.active {
+      text-decoration: underline;
+    }
+  }
+  > nav {
+    > ul {
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: row;
+      list-style: none;
+      margin: 0;
+      > li:not(:last-child) {
+        margin-right: 1rem;
+      }
+    }
+  }
+}
+
+/// Main
+body > main {
+  background: $textBg;
+  padding: 0.5rem 2rem 1rem 2rem;
+  a.anchor {
+    color: $textAccent;
+  }
+  > header {
+    margin-top: .8rem;
+    > h1,
+    > article > h1,
+    > blockquote > h1 {
+      font-size: $baseFontSize * 3;
+    }
+    > .meta {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      position: relative;
+      top: -.6rem;
+      .left {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+      }
+      .right {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+      }
+      .tags {
+        margin-left: 1rem;
+      }
+    }
+  }
+}

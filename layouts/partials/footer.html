@@ -1,19 +1,19 @@
 <footer>
 	<p>
         <i class="fa fa-copyright" aria-hidden="true"></i>
-        {{ if (and .Site.Params.since (lt .Site.Params.since now.Year)) }}
-            {{ .Site.Params.since }} -
+        {{ if (and .Site.Params.burnz.footer.since (lt .Site.Params.burnz.footer.since now.Year)) }}
+            {{ .Site.Params.burnz.footer.since }} -
         {{ end }}
         {{ now.Year }}
         {{ with .Site.Params.author }} {{ . }} {{ end }}
         ·
-        {{ if .Site.Params.copyright }}
-            Licensed under {{ .Site.Params.copyright | safeHTML }}
+        {{ with .Site.Params.burnz.footer.copyright }}
+            Licensed under {{ . | safeHTML }}
         ·
         {{ end }}
         Powered by
-        {{ if .Site.Params.powered_by }}
-        {{ .Site.Params.powered_by | safeHTML }}
+        {{ with .Site.Params.burnz.footer.powered_by }}
+        {{ . | safeHTML }}
         {{ else }}
         <a href='https://gohugo.io/'>Hugo</a> & <a href='https://github.com/ukaszg/hugo-burnz/'>Burnz</a>.
         {{ end }}

@@ -1,0 +1,188 @@
+html {
+  font: $baseFontWeight 100%/1.5 $sans-serif;
+  color: $textFg;
+  background-color: $siteBg;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-size-adjust: 100%;
+  body {
+    margin: 1rem auto;
+    max-width: $pageWidth;
+    padding: 0 .5rem;
+  }
+}
+@media print {
+  body {
+    max-width: none;
+  }
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: $boldFontWeight;
+  margin: 0 0 $baseFontSize / 2;
+  line-height: 1.2;
+  text-rendering: optimizeLegibility;
+}
+h1 {
+  font-size: $baseFontSize + $baseFontSize;
+}
+h2 {
+  font-size: $baseFontSize + ($baseFontSize * 0.75);
+}
+h3 {
+  font-size: $baseFontSize + ($baseFontSize / 2);
+}
+h4 {
+  font-size: $baseFontSize + ($baseFontSize / 4);
+}
+h5 {
+  font-size: $baseFontSize + ($baseFontSize / 8);
+}
+h6 {
+  font-size: $baseFontSize;
+}
+p {
+  margin-bottom: $baseFontSize;
+  max-width: $pageWidth * 0.9;
+  font-size: $baseFontSize;
+  word-wrap: break-word;
+  text-rendering: optimizeLegibility;
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+b,
+strong {
+  font-weight: $boldFontWeight;
+}
+i,
+em {
+  font-style: italic;
+}
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: $linkFg;
+  &:hover, &:hover:visited {
+    color: $linkHover;
+  }
+  &:visited {
+    color: $linkVisited;
+  }
+}
+ul,
+ol {
+  list-style-position: inside;
+  padding: 0;
+  margin: 0;
+  li {
+    font-size: $baseFontSize;
+    ul {
+      margin-left: $baseFontSize;
+    }
+  }
+}
+blockquote {
+  border-left: .6rem solid $blockquoteAccent;
+  padding: 1.5rem 1rem;
+  margin: 1rem 0;
+  color: $blockquoteFg;
+  background-color: $blockquoteBg;
+  font-style: italic;
+  display: block;
+  position: relative;
+  text-rendering: optimizeLegibility;
+  &::before {
+    content: "“";
+    display: inline;
+    text-shadow: 0.2rem 0.2rem darken($blockquoteAccent, 40%);
+    color: $blockquoteAccent;
+    font-size: 5rem;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: -2.5rem;
+    left: -.5rem;
+  }
+  p {
+    line-height: 1.6;
+    font-weight: $baseFontWeight;
+    font-style: italic;
+    font-size: $baseFontSize + ($baseFontSize / 6);
+    margin: 0 0 0.5rem;
+  }
+  cite {
+    color: $blockquoteAccent;
+    font-style: normal;
+    font-size: $baseFontSize;
+    &::before {
+      content: "";
+      width: 5rem;
+      height: 2px;
+      display: block;
+      margin: 0.5rem 0;
+      background-color: $blockquoteBg;
+    }
+  }
+}
+details {
+  > summary {
+    cursor: pointer;
+    padding: .2rem .5rem;
+    border-radius: .3rem;
+    background-clip: padding-box;
+    &::marker {
+      color: $detailsAccent;
+    }
+    &:hover {
+      background-color: $textDarkBg;
+      color: $textDarkFg;
+    }
+  }
+  > .details {
+    margin-left: .25rem;
+    margin-right: .25rem;
+    padding-left: 1rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    border-left: .3rem solid $detailsAccent;
+    background-color: $detailsBg;
+    color: $detailsFg;
+    p {
+      font-size: .9rem;
+    }
+  }
+}
+div.org-center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-bottom: 1rem;
+  text-rendering: optimizeLegibility;
+}
+div.verse {
+  border-left: .6rem solid $textAccent;
+  padding: 1.5rem 1rem;
+  margin: 1rem 0;
+  text-rendering: optimizeLegibility;
+}
+:not(pre) > code {
+    padding: .1rem .3rem;
+    margin: auto .1rem;
+    border: .1rem solid $codeBg;
+    border-radius: .3rem;
+    background-clip: padding-box;
+    color: $codeFg;
+    font-size: $codeFontSize;
+    font-family: $mono-font;
+    text-rendering: optimizeLegibility;
+}
+section.footnotes {
+  ol li p {
+    display: inline;
+  }
+}

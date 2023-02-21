@@ -1,12 +1,12 @@
 <header>
-    <a class='active' href="{{ .Site.BaseURL }}">
+    <a{{ if .IsHome }} class='active'{{ end }} href="{{ .Site.BaseURL }}">
       {{- .Site.Title -}}
     </a>
     {{ with .Site.Menus.main }}
     <nav>
         <ul>
             {{ range . }}
-            {{ $url := .URL | safeURL | relLangURL }}
+            {{ $url := .URL | safeURL | relURL }}
             {{ with .Page }}
             {{ $url = .RelPermalink }}
             {{ end }}

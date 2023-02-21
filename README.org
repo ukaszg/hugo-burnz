@@ -4,17 +4,14 @@
 
 
 * Burnz
-:PROPERTIES:
-:CREATED:  [2023-02-07 18:08]
-:END:
 a simple [[https://gohugo.io/][Hugo]] theme using [[https://kippura.org/zenburnpage/][Zenburn]] colors.
 it's a work in progress (not yet complete).
 
+** How it looks like
+[[./assets/example_look.png]]
+
 ** Installation
-:PROPERTIES:
-:CREATED:  [2023-02-07 18:11]
-:END:
-From your site's root (where =config.toml= file is) run:
+From your site's root (where =config.yaml= file is) run:
 #+begin_src sh
 git clone --recursive https://github.com/ukaszg/hugo-burnz.git themes/hugo-burnz
 #+end_src
@@ -24,8 +21,139 @@ theme = "hugo-burnz"
 #+end_src
 For more information read the official [[https://gohugo.io/getting-started/quick-start/][quick start guide]] of Hugo.
 
+** Configuration
+is done setting proper params in your =config.yaml=. Bellow are the default values for custom parameters. If a param is commented out it means it doesn't have a default value and setting it will turn on some functionality.
+
+Params outside of custom =params->burnz= node are default settings being used by the theme.
+#+caption: config.yaml
+#+begin_src yaml
+baseURL: "https://example.com/"
+theme: "hugo-burnz"
+params:
+  author: "me"
+  description: "My personal website."
+  email: "me@example.com"
+  disqusShortname: ""
+  googleAnalytics: ""
+  burnz:
+    colors:
+      siteBg:           "#5f5f5f"
+      textFg:           "#dcdcdc"
+      textBg:           "#3f3f3f"
+      textDarkFg:       "#989890"
+      textDarkBg:       "#383838"
+      textAccent:       "#494949"
+      linkFg:           "#94bff3"
+      linkHover:        "#93e0e3"
+      linkVisited:      "#a9a1e1"
+      footerBg:         "#4f4f4f"
+      footerAccent:     "#494949"
+      headerBg:         "#383838"
+      headerAccent:     "#656555"
+      headerFg:         "#d0bf8f"
+      headerHover:      "#989890"
+      homeSocialBg:     "#989890"
+      homeSocialFg:     "#383838"
+      homeSocialHover:  "#e0cf9f"
+      codeCaptionBg:    "#4f4f4f"
+      codeBg:           "#383838"
+      codeFg:           "#dcdcdc"
+      codeLangFg:       "#f0dfaf"
+      shareFg:          "#d0bf8f"
+      tagFg:            "#4db5bd"
+      tagHover:         "#93e0e3"
+      timeFg:           "#9fc59f"
+      detailsAccent:    "#7f9f7f"
+      detailsBg:        "#4f4f4f"
+      detailsFg:        "#dcdcdc"
+      blockquoteBg:     "#4f4f4f"
+      blockquoteFg:     "#dcdcdc"
+      blockquoteAccent: "#989890"
+    home:
+      bio:
+        blockquote: false #will wrap bio on home page in a blockquote
+        title: About
+        content:
+          - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          - Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      posts:
+        title: Latest posts
+        amount: 5
+      photo:
+        src: img/default_photo.png
+        width: 250px
+        height: 250px
+        #alt: "" # defaults to author parameter
+    icons:
+      #favicon:   img/favicon.ico
+      #favicon16: img/favicon16.png
+      #favicon32: img/favicon32.png
+    footer:
+      #since: 2023
+      #copyright: |
+      #  <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>
+      #    <i class='fa fa-creative-commons' aria-hidden='true'></i> BY-NC-SA
+      #  </a>
+      powered_by: |
+        <a href='https://gohugo.io/'>Hugo</a> &
+        <a href='https://github.com/ukaszg/hugo-burnz/'>Burnz</a>.
+    other:
+      showHighlightListingNo: false # when using ox-hugo with hacked emacs
+      pageWidth: 46rem
+      normalFontSize: 1rem
+      monoFontSize: .875rem
+markup:
+  goldmark:
+    renderer:
+      unsafe: true # for (org-mode) #+html:, required for ox-hugo
+  highlight:
+    noClasses: false # set false to use built-in highlighting theme
+taxonomies:
+  tag: "tags" # this theme only uses tags (no categories or keywords)
+menu:
+  main: # main menu is on the topbar, there is no .Pre or .Post
+    - name: <i class='fa fa-align-left' aria-hidden='true'></i> posts
+      title: Posts
+      url: posts/
+      weight: 1
+    - name: <i class='fa fa-tags' aria-hidden='true'></i> tags
+      title: Tags
+      url: tags/
+      weight: 2
+    - name: <i class='fa fa-feed' aria-hidden='true'></i> RSS
+      title: RSS
+      url: posts/index.xml
+      weight: 3
+  social: # (meant to display icons only) is shown below your photo on homepage
+    - name: <i class='fa fa-envelope fa-2x' aria-hidden='true'></i>
+      title: Email
+      url: mailto:me@example.com
+      weight: 1
+    - name: <i class='fa fa-github fa-2x' aria-hidden='true'></i>
+      title: Github
+      url: https://github.com/me/
+      weight: 3
+    - name: <i class='fa fa-stack-overflow fa-2x' aria-hidden='true'></i>
+      title: Stackoverflow
+      url: https://stackoverflow.com/users/123/me
+      weight: 4
+    - name: <i class='fa fa-linkedin fa-2x' aria-hidden='true'></i>
+      title: Linkedin
+      url: https://www.linkedin.com/in/me/
+      weight: 5
+    - name: <i class='fa fa-lastfm fa-2x' aria-hidden='true'></i>
+      title: LastFM
+      url: https://www.last.fm/user/me
+      weight: 6
+    - name: |
+        <span class='fa-stack'>
+          <i class='fa fa-file-o fa-stack-2x' aria-hidden='true'></i>
+          <i class='fa fa-stack-1x' aria-hidden='true'>cv</i>
+        </span>
+      title: Curriculum Vitae
+      url: files/cv.pdf
+      weight: 7
+#+end_src
+
 ** License
-:PROPERTIES:
-:CREATED:  [2023-02-07 18:16]
-:END:
 This theme is released under the [[https://github.com/ukaszg/theme/blob/master/LICENSE][MIT license]].

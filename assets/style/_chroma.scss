@@ -1,11 +1,11 @@
 .highlight {
   font-family: $mono-font;
-  font-size: .875rem;
+  font-size: $codeFontSize;
   line-height: 1.4em;
   .chroma {
     padding: .62rem 1rem .62rem 1rem;
-    color: $fg-alt;
-    background-color: $bg-alt;
+    color: $codeFg;
+    background-color: $codeBg;
     /* Other */                    .x    {color: $missing;}
     /* Error */                    .err  {color: $missing;}
     /* LineTableTD */              .lntd {

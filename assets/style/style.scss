@@ -1,9 +1,3 @@
-// Fonts
-@import "fonts";
-$code-size: .875rem;
-$mono-font: "Inconsolata", monospace;
-$main-font: "Inter", sans-serif;
-
 /// Zenburn Colors
 $bg: #3f3f3f;
 $bg-alt: #383838;
@@ -50,274 +44,62 @@ $blue-3: #5c888b;
 $blue-4: #4c7073;
 $blue-5: #366060;
 
-/// Reset
-$sans-serif: $main-font;
-$baseFontWeight: 400 !default;
-$baseFontSize: 1rem !default;
-$baseColor: $blue_1 !default;
-$litegray: $gray;
-$text: $fg !default;
-@import "resetatron/index.scss";
+/// Settings
+$baseFontWeight: 400;
+$boldFontWeight: 700;
+$mono-font: "Inconsolata", monospace;
+$sans-serif: "Inter", sans-serif;
 
-/// ForkAwesome
-$fa-font-path: "fonts" !default;
-@import "fork-awesome/scss/fork-awesome.scss";
+$baseFontSize: 1rem;
+$codeFontSize: .875rem;
+$siteBg: {{ .Site.Params.burnz.colors.siteBg | default "$base6" }};
+$textFg: {{ .Site.Params.burnz.colors.textFg | default "$fg" }};
+$textBg: {{ .Site.Params.burnz.colors.textBg | default "$bg" }};
+$textDarkFg: {{ .Site.Params.burnz.colors.textDarkFg | default "$fg-alt" }};
+$textDarkBg: {{ .Site.Params.burnz.colors.textDarkBg | default "$bg-alt" }};
+$textAccent: {{ .Site.Params.burnz.colors.textAccent | default "$grey" }};
+$footerBg: {{ .Site.Params.burnz.colors.footerBg | default "$base5" }};
+$footerAccent: {{ .Site.Params.burnz.colors.footerAccent | default "$base4" }};
+$headerBg: {{ .Site.Params.burnz.colors.headerBg | default "$bg-alt" }};
+$headerAccent: {{ .Site.Params.burnz.colors.headerAccent | default "$fg-1" }};
+$headerFg: {{ .Site.Params.burnz.colors.headerFg | default "$yellow-2" }};
+$headerHover: {{ .Site.Params.burnz.colors.headerHover | default "$fg-alt" }};
+$shareFg: {{ .Site.Params.burnz.colors.shareFg | default "$yellow-2" }};
+$tagFg: {{ .Site.Params.burnz.colors.tagFg | default "$teal" }};
+$tagHover: {{ .Site.Params.burnz.colors.tagHover | default "$cyan" }};
+$timeFg: {{ .Site.Params.burnz.colors.timeFg | default "$green-2" }};
+$linkFg: {{ .Site.Params.burnz.colors.linkFg | default "$blue_1" }};
+$linkHover: {{ .Site.Params.burnz.colors.linkHover | default "$cyan" }};
+$linkVisited: {{ .Site.Params.burnz.colors.linkVisited | default "$violet" }};
+$detailsAccent: {{ .Site.Params.burnz.colors.detailsAccent | default "$green" }};
+$detailsBg: {{ .Site.Params.burnz.colors.detailsBg | default "$base5" }};
+$detailsFg: {{ .Site.Params.burnz.colors.detailsFg | default "$fg" }};
+$blockquoteBg: {{ .Site.Params.burnz.colors.blockquoteBg | default "$base5" }};
+$blockquoteFg: {{ .Site.Params.burnz.colors.blockquoteFg | default "$fg" }};
+$blockquoteAccent: {{ .Site.Params.burnz.colors.blockquoteAccent | default "$fg-alt" }};
+$homeSocialBg: {{ .Site.Params.burnz.colors.homeSocialBg | default "$fg-alt" }};
+$homeSocialFg: {{ .Site.Params.burnz.colors.homeSocialFg | default "$bg-alt" }};
+$homeSocialHover: {{ .Site.Params.burnz.colors.homeSocialHover | default "$yellow-2" }};
+$codeCaptionBg: {{ .Site.Params.burnz.colors.codeCaptionBg | default "$base5" }};
+$codeBg: {{ .Site.Params.burnz.colors.codeBg | default "$bg-alt" }};
+$codeFg: {{ .Site.Params.burnz.colors.codeFg | default "$fg" }};
+$codeLangFg: {{ .Site.Params.burnz.colors.codeCaptionLangFg | default "$yellow" }};
+$pageWidth: {{ .Site.Params.burnz.other.pageWidth | default "46rem" }};
+$showListingNo: {{ if (eq .Site.Params.other.showHighlightListingNo true) }}inline{{ else }}none{{ end }};
+// will display missing highlight classes when on preview
+$missing: {{ if (hugo.IsProduction | or (eq .Site.Params.env "production")) }}$textFg{{ else }}#FF1111{{ end }};
 
-/// Common code highlighting.
-:not(pre) > code {
-    padding: .1rem .3rem;
-    margin: auto .1rem;
-    border: .1rem solid $grey;
-    border-radius: .3rem;
-    background-clip: padding-box;
-    color: $fg;
-    font-size: $code-size;
-    font-family: $mono-font;
-}
-
-// Code Highlighting by Emacs
-{{ if (eq .Site.Params.highlight.showListingNo true) }}
-$showListingNo: inline;
-{{ else }}
-$showListingNo: none;
-{{ end }};
-$codeCaptionBg: $base5;
+@import "reset";
+@import "typography";
+@import "partials";
 @import "emacs";
-
-// Code Highlighting by Chroma
-{{ if (hugo.IsProduction | or (eq .Site.Params.env "production")) }}
-$missing: $fg;
-{{ else }}
-$missing: #FF1111;
-{{ end }}
 @import "chroma";
+@import "fonts";
 
-/// Styles
-body {
-  color: $fg;
-  background: $base6;
-  margin: 1rem auto;
-  max-width: 46rem;
-  padding: 0 .62rem;
-  font-family: $main-font;
-  ul.tags {
-    list-style: none;
-    margin: 0;
-    display: flex;
-    justify-content: flex-start;
-    a {
-      color: $teal !important;
-      &:hover {
-        color: $cyan !important;
-      }
-    }
-    > li:not(:last-child) {
-      margin-right: 1rem;
-    }
-  }
-  a {
-    color: $blue_1;
-    &.anchor {
-      color: $grey;
-    }
-    &.disabled, &.disabled:hover, &.disabled:visited:hover, &.disabled:visited {
-      color: $grey !important;
-      cursor: not-allowed !important;
-      pointer-events: none;
-      display: inline-block;
-    }
-    &:hover, &:visited:hover {
-      color: $cyan;
-    }
-    &:visited {
-      color: $violet;
-    }
-  }
-  section.footnotes {
-    ol li p {
-      display: inline;
-    }
-  }
-  > header {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    background: $bg-alt;
-    min-height: 1.6rem;
-    padding: .3rem 1.5rem .2rem 1.5rem;
-    border-top: .35rem solid $fg-1;
-    border-bottom: .1rem solid $fg-1;
-    a {
-      color: $yellow-2 !important;
-      &:hover, &:hover:visited {
-        color: $fg-alt !important;
-      }
-      &.active {
-        text-decoration: underline;
-        color: $yellow !important;
-        > i {
-          text-decoration: underline;
-          color: $yellow !important;
-        }
-      }
-    }
-    > nav {
-      > ul {
-        display: flex;
-        justify-content: flex-end;
-        flex-direction: row;
-        list-style: none;
-        margin: 0;
-        > li:not(:last-child) {
-          margin-right: 1rem;
-        }
-      }
-    }
-  }
-  > main {
-    background: $bg;
-    padding: 0.62rem 2rem 1.24rem 2rem;
-    border-bottom: 0.12rem solid $bg-alt;
-    article.summary {
-      h1,h2,h3,h4 {
-        display: flex;
-        justify-content: flex-start;
-        flex-direction: row;
-        > span {
-          margin-left: 1rem;
-        }
-        time {
-          color: $green-2;
-          overflow: hidden;
-          flex-shrink: 0;
-        }
-        ul.tags:not(:last-child) {
-          margin-right: 1rem;
-        }
-      }
-    }
-    .about {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-      margin-bottom: 2rem;
-      .info {
-        margin-top: 2rem;
-        width: 20rem;
-      }
-      .avatar {
-        flex-shrink: 0;
-        margin-top: .5rem;
-        border: .25rem {{ with .Site.Params.home.avatar.bg }}{{ . }}{{ else }}$fg-alt{{ end }} solid;
-        border-radius: .6rem;
-        background-color: {{ with .Site.Params.home.avatar.bg }}{{ . }}{{ else }}$fg-alt{{ end }};
-        img {
-          border-radius: .6rem;
-        }
-        ul {
-          list-style: none;
-          margin: 0;
-          display: flex;
-          justify-content: space-evenly;
-          flex-direction: row;
-          a {
-            color: $base1;
-            &:hover, &:hover:visited {
-              color: $yellow-2 !important;
-            }
-          }
-        }
-      }
-    }
-    header {
-      > h1 {
-        margin-top: .8rem;
-        font-size: 3rem;
-      }
-      span.meta {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        position: relative;
-        top: -.6rem;
-        span.left {
-          display: flex;
-          flex-direction: row;
-          justify-content: flex-start;
-        }
-        span.right {
-          display: flex;
-          flex-direction: row;
-          justify-content: flex-end;
-        }
-        time {
-          color: $green-2;
-        }
-        ul.tags {
-          margin-left: 1rem;
-        }
-        span#share {
-          a {
-            cursor: pointer;
-          }
-          a, a:link, a:visited {
-            color: $yellow-2 !important;
-          }
-          a:hover {
-            color: $fg-alt !important;
-          }
-          ul#share_links {
-            list-style: none;
-            margin: 0;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            position: absolute;
-            right: 1.5rem;
-            top: -.35rem;
-            background-color: $bg-alt;
-            border: .2rem solid $grey;
-            padding: .2rem .5rem;
-            border-radius: .5rem;
-            a:link, a:visited {
-              color: $yellow-1 !important;
-            }
-            a:hover {
-              color: $fg-alt !important;
-            }
-            li {
-              &:not(:last-child) {
-                margin-right: .7rem;
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  > footer {
-    background: $base5;
-    padding: 0 2.2rem 0 2.2rem;
-    border-bottom: .2rem solid $base4;
-    color: $fg-alt;
-    display: flex;
-    justify-content: center;
-    p {
-      font-size: .7rem;
-    }
-  }
-}
-#pagination {
-  margin-top: 2rem;
-  display: flex;
-  justify-content: space-evenly;
-  flex-direction: row;
-  a {
-    padding: 0 .6rem 0 .6rem;
-  }
-}
-@media print {
-  body {
-    max-width: none;
-  }
-}
+$fa-font-path: "fonts";
+$fa-css-prefix: "fa";
+$fa-font-size-base: $baseFontSize;
+$fa-line-height-base: 1;
+$fa-border-color: $textFg;
+$fa-inverse: $textAccent;
+@import "fork-awesome/scss/fork-awesome.scss";
