@@ -21,7 +21,8 @@
     }
     ul {
       list-style: none;
-      margin: 0;
+      margin-top: .3rem;
+      margin-bottom: .1rem;
       display: flex;
       justify-content: space-evenly;
       flex-direction: row;
@@ -224,12 +225,35 @@ body > header {
 /// Main
 body > main {
   background: $textBg;
-  padding: 0.5rem 2rem 1rem 2rem;
+  padding: 0.5rem 0 1rem;
   a.anchor {
     color: $textAccent;
   }
+  > article {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+  > section {
+    margin-left: .3rem;
+    margin-right: .3rem;
+    > h1 {
+      margin-left: 1rem;
+    }
+  }
+  > footer  {
+    margin: {
+      top: 1.5rem;
+      left: .5rem;
+      right: .5rem;
+    }
+  }
   > header {
-    margin-top: .8rem;
+    margin: {
+      left: 2rem;
+      right: 2rem;
+      top: .75rem;
+      bottom: 1rem;
+    }
     > h1,
     > article > h1,
     > blockquote > h1 {
@@ -254,6 +278,14 @@ body > main {
       .tags {
         margin-left: 1rem;
       }
+    }
+    > div {
+      color: $textDarkFg;
+      font-size: .8em;
+      line-height: 0.8;
+      position: relative;
+      top: -.8em;
+      font-style: italic;
     }
   }
 }
