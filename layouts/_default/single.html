@@ -1,7 +1,7 @@
 {{ define "main" }}
 <main>
     <header>
-        <h1>{{ .Title }}</h1>
+        {{ with .Title }}<h1>{{ . }}</h1>{{ end }}
         <span class='meta'>
             <span class="left">
                 {{ partial "clock.html" . }}
@@ -18,7 +18,7 @@
     <article>{{ . }}</article>
     {{ end }}
 
-    {{ with .Site.DisqusShortname }}
+    {{ if .Site.DisqusShortname }}
     <footer id="disqus">
         {{ template "_internal/disqus.html" . }}
     </footer>

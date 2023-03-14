@@ -1,11 +1,9 @@
 {{ define "main" }}
 <main>
-    {{ if .Title }}
     <header>
-        <h1>{{ .Title }}</h1>
+        {{ with .Title }}<h1>{{ . }}</h1>{{ end }}
         {{ with .Description }}<div>{{ . }}</div>{{ end }}
     </header>
-    {{ end }}
 
     {{ with .Content }}
     <article>{{ . }}</article>
@@ -13,6 +11,7 @@
 
     <section>
         <ul class="terms">
+            {{ $icon := .Params.icon | default (.Type | singularize) }}
             {{ $type := .Type }}
             {{ range $key, $value := .Data.Terms.Alphabetical }}
             {{ $name := .Name }}
@@ -20,11 +19,11 @@
             {{ with site.GetPage (printf "/%s/%s" $type $name) }}
             <li>
                 <a href="{{ .Permalink }}">
-                  <i class='fa fa-tag' aria-hidden='true'></i>
-                  &nbsp;
-                  {{- .Name -}}
-                  &nbsp;
-                  <sup><strong>{{ $count }}</strong></sup>
+                    <i class='fa fa-{{ $icon }}' aria-hidden='true'></i>
+                    &nbsp;
+                    {{- $name -}}
+                    &nbsp;
+                    <sup><strong>{{ $count }}</strong></sup>
                 </a>
             </li>
             {{ end }}
