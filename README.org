@@ -98,7 +98,7 @@ params:
         <a href='https://gohugo.io/'>Hugo</a> &
         <a href='https://github.com/ukaszg/hugo-burnz/'>Burnz</a>.
     other:
-      showHighlightListingNo: false # when using ox-hugo with hacked emacs
+      showCodeListingNo: false # when using ox-hugo with hacked emacs
       pageWidth: 46rem
       normalFontSize: 1rem
       monoFontSize: .875rem
