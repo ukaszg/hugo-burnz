@@ -84,7 +84,7 @@ $codeCaptionBg: {{ .Site.Params.burnz.colors.codeCaptionBg | default "$base5" }}
 $codeBg: {{ .Site.Params.burnz.colors.codeBg | default "$bg-alt" }};
 $codeFg: {{ .Site.Params.burnz.colors.codeFg | default "$fg" }};
 $codeLangFg: {{ .Site.Params.burnz.colors.codeCaptionLangFg | default "$yellow" }};
-$pageWidth: {{ .Site.Params.burnz.other.pageWidth | default "46rem" }};
+$pageWidth: {{ .Site.Params.burnz.other.pageWidth | default "53rem" }};
 $showListingNo: {{ if (eq .Site.Params.other.showCodeListingNo true) }}inline{{ else }}none{{ end }};
 // will display missing highlight classes when on preview
 $missing: {{ if (hugo.IsProduction | or (eq .Site.Params.env "production")) }}$textFg{{ else }}#FF1111{{ end }};
