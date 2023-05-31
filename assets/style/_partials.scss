@@ -26,7 +26,7 @@
       display: flex;
       justify-content: space-evenly;
       flex-direction: row;
-      a {
+      > li > a {
         color: $homeSocialFg;
         &:hover, &:hover:visited {
           color: $homeSocialHover;
@@ -42,15 +42,6 @@
 /// Share
 #share {
   position: relative;
-  a {
-    color: $shareFg;
-    &:visited {
-      color: $shareFg;
-    }
-    &:hover, &:hover:visited {
-      color: $textDarkFg;
-    }
-  }
   ul#share_links {
     list-style: none;
     margin: 0;
@@ -70,8 +61,19 @@
       opacity: 0;
       transition: opacity 400ms;
     }
-    > li:not(:last-child) {
-      margin-right: .7rem;
+    > li {
+      &:not(:last-child) {
+        margin-right: .7rem;
+      }
+      > a {
+        color: $shareFg;
+        &:visited {
+          color: $shareFg;
+        }
+        &:hover, &:hover:visited {
+          color: $textDarkFg;
+        }
+      }
     }
   }
 }
@@ -82,17 +84,19 @@ ul.tags {
   margin: 0;
   display: flex;
   justify-content: flex-start;
-  a {
-    color: $tagFg;
-    &:visited, &:link {
+  > li {
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+    > a {
       color: $tagFg;
+      &:visited, &:link {
+        color: $tagFg;
+      }
+      &:hover, &:hover:visited {
+        color: $tagHover;
+      }
     }
-    &:hover, &:hover:visited {
-      color: $tagHover;
-    }
-  }
-  > li:not(:last-child) {
-    margin-right: 1rem;
   }
 }
 
