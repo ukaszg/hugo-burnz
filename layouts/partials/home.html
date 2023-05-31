@@ -1,27 +1,15 @@
 <main>
     <header class='about'>
-        {{- $blockquote := .Site.Params.burnz.home.bio.blockquote | default false -}}
-        {{- if $blockquote -}}
-        <blockquote class='info'>
-        {{- else -}}
-        <article class='info'>
-        {{- end -}}
-            {{ with .Site.Params.burnz.home.bio.title | default "About" }}
-            <h1>{{ . }}</h1>
-            {{ end }}
-            {{ if .Site.Params.burnz.home.bio.content }}
+        <section class='info'>
+            {{ with .Site.Params.burnz.home.bio.title | default .Title }}<h1>{{ . }}</h1>{{ end }}
+            {{ if reflect.IsSlice .Site.Params.burnz.home.bio.content }}
             {{ range .Site.Params.burnz.home.bio.content }}
-            <p>{{ . }}</p>
+            <p>{{ . | markdownify }}</p>
             {{ end }}
             {{ else }}
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>{{ .Site.Params.burnz.home.bio.content | markdownify }}</p>
             {{ end }}
-        {{ if $blockquote }}
-        </blockquote>
-        {{ else }}
-        </article>
-        {{ end }}
+        </section>
         <div class='avatar'>
             <img src='{{ .Site.Params.burnz.home.photo.src | default "img/default_photo.png" | absURL }}'
                  height='{{ .Site.Params.burnz.home.photo.height | default "250px" }}'
